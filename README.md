@@ -1,9 +1,10 @@
-# slowly_programming
+# learning-go-echo
 
 ## 技術スタック
 
 ### フロントエンド
 
+[Next.js](https://github.com/tsubasa111/learning-next-js)
 React/Next  
 SWR
 
