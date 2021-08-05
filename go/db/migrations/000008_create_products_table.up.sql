@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS products(
+    id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    user_id BIGINT UNSIGNED NOT NULL,
+    product_genre_id INT UNSIGNED NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    thumbnail VARCHAR(255) NOT NULL,
+    price BIGINT UNSIGNED NOT NULL,
+    description TEXT NOT NULL,
+    vertical_length MEDIUMINT UNSIGNED NOT NULL,
+    horizontal_length MEDIUMINT UNSIGNED NOT NULL,
+    is_published TINYINT UNSIGNED NOT NULL,
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT fk_products_users1 FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_products_product_genres1 FOREIGN KEY (product_genre_id) REFERENCES product_genres (id) ON DELETE CASCADE ON UPDATE CASCADE
+);
