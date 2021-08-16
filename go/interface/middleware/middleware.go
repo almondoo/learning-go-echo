@@ -26,9 +26,7 @@ func CORSMiddleware() echo.MiddlewareFunc {
 		},
 		AllowMethods: []string{
 			http.MethodGet,
-			http.MethodHead,
 			http.MethodPut,
-			http.MethodPatch,
 			http.MethodPost,
 			http.MethodDelete,
 		},
@@ -39,7 +37,11 @@ func CORSMiddleware() echo.MiddlewareFunc {
 //- csrf
 func CSRFMiddleware() echo.MiddlewareFunc {
 	return middleware.CSRFWithConfig(middleware.CSRFConfig{
-		CookieDomain: os.Getenv("CORS_DOMAIN"),
+		TokenLookup:    "header:X-CSRF-TOKEN",
+		CookieDomain:   os.Getenv("CORS_DOMAIN"),
+		CookieName:     "csrf",
+		CookieSecure:   true,
+		CookieHTTPOnly: true,
 	})
 }
 
